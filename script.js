@@ -41,3 +41,28 @@ const init =()=> {
 	updateBalanceValues();
 }
 init();
+
+const generateID = () => Math.round(Math.random() *1000);
+
+form.addEventListener("submit", event =>{
+	event.preventDefault();
+
+	const transactionName = inputTransactionName.value.trim();
+	const transactionAmount = inputTransactionAmount.value.trim();
+
+	if (transactionName === ""  || transactionAmount === ""){
+		alert("É preciso preencher nome e valor para cada transação");
+		return
+	}
+	const transaction = {
+	id: generateID(),
+	name: transactionName,
+	amount: Number(transactionAmount) 
+}
+
+dummyTransactions.push(transaction)
+init()
+
+inputTransactionName.value = "";
+inputTransactionAmount.value = "";
+});
